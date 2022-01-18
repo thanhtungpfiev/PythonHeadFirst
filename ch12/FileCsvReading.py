@@ -57,3 +57,11 @@ with open('buzzers.csv') as data:
 
     more_dest = [dest.title() for dest in flights.values()]
     print(more_dest)
+
+    fts = {convert2ampm(k): v.title() for k, v in flights.items()}
+    when = {}
+    for dest in set(fts.values()):
+        when[dest] = [k for k, v in fts.items() if v == dest]
+    pprint.pprint(when)
+    when2 = {dest: [k for k, v in fts.items() if v == dest] for dest in set(fts.values())}
+    pprint.pprint(when2)
